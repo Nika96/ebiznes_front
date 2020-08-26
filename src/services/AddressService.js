@@ -36,6 +36,20 @@ export class AddressService {
         return JSON.parse(await res.text());
     }
 
+    async updateAddress(id, street, flatNumber, zipCode): Promise<Address> {
+        let res;
+        try {
+            var opt = {
+                'method': 'PUT',
+                body: JSON.stringify({"id": id, "street": street, "flatNumber": flatNumber, "zipCode": zipCode})
+            }
+            res = await fetch(url, opt);
+        } catch(error) {
+            console.log('Cannnot update an address, error: ' + error);
+        }
+        return JSON.parse(await res.text());
+    }
+
     async deleteAddress(id, street, flatNumber, zipCode): Promise<Address> {
         let res;
         try {

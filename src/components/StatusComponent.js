@@ -1,5 +1,8 @@
 import React, { Component } from "react";
 import { StatusService } from "../services/StatusService";
+import Modal from 'react-bootstrap/Modal';
+import Button from 'react-bootstrap/Button';
+
 
 export class StatusComponent extends Component {
 
@@ -18,6 +21,20 @@ export class StatusComponent extends Component {
     }
 
     render() {
-        return <div>{this.state.status}</div>
+        return (
+            <Modal.Dialog>
+                <Modal.Header closeButton>
+                    <Modal.Title>Status of your order</Modal.Title>
+                </Modal.Header>
+
+                <Modal.Body>
+                    <p>Waiting for seller to send...</p>
+                </Modal.Body>
+
+                <Modal.Footer>
+                    <Button variant="secondary">Close</Button>
+                </Modal.Footer>
+            </Modal.Dialog>
+        );
     }
 }

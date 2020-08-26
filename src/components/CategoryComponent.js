@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { CategoryService } from "../services/CategoryService";
+import Dropdown from 'react-bootstrap/Dropdown'
 
 
 export class CategoryComponent extends Component {
@@ -13,12 +14,22 @@ export class CategoryComponent extends Component {
     }
 
     async componentDidMount() {
-        // let res = await this.addressService.getAllAddresses();
-        let res = await this.categoryService.createCategory("Books", "Lorem ipsum");
-        this.setState({category: JSON.stringify(res)});
+        let res = await this.categoryService.getAllCategories();
+        this.setState({category: res});
     }
 
     render() {
-        return <div>{this.state.category}</div>
+        return (
+            <Dropdown>
+                <Dropdown.Toggle variant="success" id="dropdown-basic">
+                    Product categories
+                </Dropdown.Toggle>
+                <Dropdown.Menu>
+                    <Dropdown.Item href="#/action-1">Baking</Dropdown.Item>
+                    <Dropdown.Item href="#/action-2">Cooking</Dropdown.Item>
+                    <Dropdown.Item href="#/action-2">Cleaning</Dropdown.Item>
+                </Dropdown.Menu>
+            </Dropdown>
+        );
     }
 }

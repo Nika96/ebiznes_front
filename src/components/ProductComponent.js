@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { ProductService } from "../services/ProductService";
-
+import Card from 'react-bootstrap/Card';
+import Button from 'react-bootstrap/Button';
 
 export class ProductComponent extends Component {
 
@@ -18,6 +19,18 @@ export class ProductComponent extends Component {
     }
 
     render() {
-        return <div>{this.state.product}</div>
+        return (
+            <Card style={{ width: '18rem' }}>
+                <Card.Img variant="top" src="holder.js/100px180" />
+                <Card.Body>
+                    <Card.Title>Baking sheet</Card.Title>
+                    <Card.Text>
+                        Some quick example text to build on the card title and make up the bulk of
+                        the card's content.
+                    </Card.Text>
+                    <Button variant="success">Add to basket</Button>
+                </Card.Body>
+            </Card>
+        );
     }
 }

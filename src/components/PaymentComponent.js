@@ -14,7 +14,6 @@ export class PaymentComponent extends Component {
 
     async componentDidMount() {
         let res = await this.paymentService.getAllPayments();
-        // let res = await this.orderService.getAddressByID(1)
         this.setState({payment: JSON.stringify(res)});
     }
 

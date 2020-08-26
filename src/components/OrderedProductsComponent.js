@@ -1,10 +1,11 @@
 import React, { Component } from "react";
 import { OrderedProductsService } from "../services/OrderedProductsService";
+import Table from "react-bootstrap/Table";
 
 
 export class OrderedProductsComponent extends Component {
 
-    orderService: OrderService;
+    orderService: OrderedProductsService;
 
     constructor() {
         super();
@@ -13,12 +14,33 @@ export class OrderedProductsComponent extends Component {
     }
 
     async componentDidMount() {
-        let res = await this.orderService.getAllOrderedProducts();
-        // let res = await this.orderService.getAddressByID(1)
-        this.setState({order: JSON.stringify(res)});
+        let res = await this.orderService.getOrderedProductsByID(1);
+        this.setState({order: res});
     }
 
     render() {
-        return <div>{this.state.order}</div>
+        return (
+            <div>
+                <h5>Ordered Products</h5>
+                <Table striped bordered hover>
+                    <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Product ID</th>
+                        <th>Product Name</th>
+                        <th>Quantity</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>{ this.state.order.id }</td>
+                        <td>{ this.state.order.productID }</td>
+                        <td>{ this.state.order.productName }</td>
+                        <td>{ this.state.order.quantity }</td>
+                    </tr>
+                    </tbody>
+                </Table>
+            </div>
+        );
     }
 }
