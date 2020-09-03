@@ -1,9 +1,14 @@
+// eslint-disable-next-line
 import React, { Component } from "react";
 import { OrderService } from "../services/OrderService";
 import Table from "react-bootstrap/Table";
+import {CategoryComponent} from "./CategoryComponent";
 
 const styling = {
-  width: '800px'
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center'
 };
 
 export class OrderComponent extends Component {
@@ -22,7 +27,8 @@ export class OrderComponent extends Component {
     }
 
     render() {
-        return (
+
+        let orderTable = (
             <div style={styling}>
                 <h5>Order</h5>
                 <Table striped bordered hover>
@@ -44,6 +50,14 @@ export class OrderComponent extends Component {
                     </tbody>
                 </Table>
             </div>
+        );
+
+        return (
+            <div>
+                <CategoryComponent></CategoryComponent>
+                { orderTable }
+            </div>
+
         );
     }
 }

@@ -1,10 +1,5 @@
-// eslint-disable-next-line
 import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import * as serviceWorker from './serviceWorker';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import {BrowserRouter, Route} from "react-router-dom";
+import { BrowserRouter, Route } from "react-router-dom";
 import {AddressComponent} from "./components/AddressComponent";
 import {BasketComponent} from "./components/BasketComponent";
 import {CategoryComponent} from "./components/CategoryComponent";
@@ -15,9 +10,8 @@ import {OrderedProductsComponent} from "./components/OrderedProductsComponent";
 import {PaymentComponent} from "./components/PaymentComponent";
 import {ReviewComponent} from "./components/ReviewComponent";
 import {StatusComponent} from "./components/StatusComponent";
-import {LogInComponent} from "./components/LogInComponent";
 
-ReactDOM.render(
+const routing = (
     <BrowserRouter>
         <Route exact path="/address" component={AddressComponent}/>
         <Route exact path="/basket" component={BasketComponent}/>
@@ -29,12 +23,7 @@ ReactDOM.render(
         <Route exact path="/payment" component={PaymentComponent}/>
         <Route exact path="/review" component={ReviewComponent}/>
         <Route exact path="/status" component={StatusComponent}/>
-        <Route exact path="/logIn"  component={LogInComponent}/>
-    </BrowserRouter>,
-  document.getElementById('root')
+    </BrowserRouter>
 );
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+export default { routing }

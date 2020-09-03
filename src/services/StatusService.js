@@ -1,3 +1,4 @@
+// eslint-disable-next-line
 import React from "react";
 
 export class Status {
@@ -24,7 +25,7 @@ export class StatusService {
         let res;
         try {
             var opt = {
-                'method': 'POST',
+                method: 'POST',
                 body: JSON.stringify({"id": 0, "orderStatusCode": orderStatusCode, "orderStatusDescription": orderStatusDescription})
             }
             res = await fetch(url, opt);

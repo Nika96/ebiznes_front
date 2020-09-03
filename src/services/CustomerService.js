@@ -1,3 +1,4 @@
+// eslint-disable-next-line
 import React from "react";
 
 export class Customer {
@@ -15,7 +16,7 @@ export class CustomerService {
         let res;
         try {
             var opt = {
-                'method': 'POST',
+                method: 'POST',
                 body: JSON.stringify({"id": 0, "name": name, "surname": surname,
                     "email": email, "phoneNumber": phoneNumber, "password": password,
                     "address": address})

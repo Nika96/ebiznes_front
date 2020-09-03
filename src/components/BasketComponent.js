@@ -1,3 +1,4 @@
+// eslint-disable-next-line
 import React, { Component } from "react";
 import { BasketService } from "../services/BasketService";
 import Table from 'react-bootstrap/Table';
