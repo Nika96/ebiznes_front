@@ -12,7 +12,7 @@ const url = "http://localhost:9000/order";
 
 export class OrderService {
 
-    async getAllOrders(): Promise<Array<Order>> {
+    async getAllOrders(): Promise<Order> {
         let res;
         try {
             res = await fetch(url);

@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import { CustomerService } from "../services/CustomerService";
 import Card from 'react-bootstrap/Card';
-import Button from 'react-bootstrap/Button'
-import Nav from "react-bootstrap/Nav";
+import Button from 'react-bootstrap/Button';
 import {CategoryComponent} from "./CategoryComponent";
 
 export class CustomerComponent extends Component {

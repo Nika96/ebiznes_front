@@ -21,20 +21,20 @@ export class CategoryService {
         return JSON.parse(await res.text());
     }
 
-    async createCategory(categoryName, categoryDescription): Promise<Category> {
-        let res;
-        try {
-            var opt = {
-                method: 'POST',
-                body: JSON.stringify(
-                    {"id": 0, "categoryName": categoryName, "categoryDescription": categoryDescription})
-            }
-            res = await fetch(url, opt);
-        } catch(error) {
-            console.log('Cannnot create category, error: ' + error);
-        }
-        return this.getAllCategories();
-    }
+    // async createCategory(categoryName, categoryDescription): Promise<Category> {
+    //     let res;
+    //     try {
+    //         var opt = {
+    //             method: 'POST',
+    //             body: JSON.stringify(
+    //                 {"id": 0, "categoryName": categoryName, "categoryDescription": categoryDescription})
+    //         }
+    //         res = await fetch(url, opt);
+    //     } catch(error) {
+    //         console.log('Cannnot create category, error: ' + error);
+    //     }
+    //     return this.getAllCategories();
+    // }
 
     async deleteCategory(id, categoryName, categoryDescription): Promise<Category> {
         let res;

@@ -1,34 +1,40 @@
 // eslint-disable-next-line
 import React, { Component } from "react";
-import { ProductService } from "../services/ProductService";
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
+import { ProductService } from "../services/ProductService";
+import {OrderedProductsService} from "../services/OrderedProductsService";
 
 export class ProductComponent extends Component {
 
     productService: ProductService;
+    orderedProductService: OrderedProductsService;
 
     constructor() {
         super();
         this.productService = new ProductService();
+        this.orderedProductService = new OrderedProductsService();
         this.state = {product: []};
     }
 
     async componentDidMount() {
         let res = await this.productService.getAllProducts();
         this.setState({product: res});
-        console.log("RES ", res);
     }
 
     deleteProduct(event, id) {
         event.preventDefault();
-        this.productService.deleteProduct(id);
+        this.productService.deleteProduct(id)
+            .then(result => console.log('Deletion succeeded ', result))
+            .catch(err => console.log('An error occured during the deletion: ', err));
         window.location.reload(false);
     }
 
-    refreshTheSite(event) {
+    addToBasket(event, productID, name) {
         event.preventDefault();
-        window.location.reload(false);
+        this.orderedProductService.createOrderedProducts(productID, name, 1, 1)
+            .then(console.log('Added to basket: '))
+            .catch(err => console.log('An error occured while adding to basket: ', err));
     }
 
     render() {
@@ -54,7 +60,10 @@ export class ProductComponent extends Component {
                     <Card.Title>{ product.productName }</Card.Title>
                     <Card.Subtitle>{ product.productPrice }</Card.Subtitle>
                     <Card.Text>{ product.productDescription }</Card.Text>
-                    <Button variant="success" onClick={(event) => this.refreshTheSite(event)}>Add to basket</Button>
+                    <Button variant="success" onClick={(event) =>
+                        this.addToBasket(event,
+                                        product.id,
+                                        product.productName)}>Add to basket</Button>
                 </Card.Body>
             </Card>
         ));

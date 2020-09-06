@@ -26,23 +26,29 @@ export class OrderedProductsService {
     async createOrderedProducts(productID, productName, quantity, orderID): Promise<OrderedProducts> {
         let res;
         try {
-            var opt = {
+            let opt = {
                 method: 'POST',
-                body: JSON.stringify({"id": 0, "productID": productID, "productName": productName,
-                    "quantity": quantity, "orderID": orderID})
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({"id": 0,
+                                            "productID": productID,
+                                            "productName": productName,
+                                            "quantity": quantity,
+                                            "orderID": orderID})
             }
+            console.log("BODY : " + opt.body);
             res = await fetch(url, opt);
         } catch(error) {
             console.log('Cannnot create an order, error: ' + error);
         }
-        return JSON.parse(await res.text());
+        console.log('RES BEF ret: ', res);
+        return await res.text();
     }
 
     async deleteOrder(id, productID, productName, quantity, orderID): Promise<OrderedProducts> {
         let res;
         try {
             var opt = {
-                'method': 'DELETE',
+                method: 'DELETE',
                 body: JSON.stringify({"id": id, "productID": productID, "productName": productName,
                     "quantity": quantity, "orderID": orderID})
             }

@@ -29,17 +29,16 @@ export class ProductService {
             let opt = {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({"id": 0, "productName": productName,
-                    "productDescription": productDescription,
-                    "productPrice": productPrice,
-                    "category": category})
+                body: JSON.stringify({"id": 0,
+                                            "productName": productName,
+                                            "productDescription": productDescription,
+                                            "productPrice": productPrice,
+                                            "category": category})
             }
-            console.log("BODY : " + opt.body);
             res = await fetch(url, opt);
         } catch(error) {
             console.log('Cannnot create the product, error: ' + error);
         }
-        console.log(res)
         return await res.text();
     }
 
@@ -50,8 +49,9 @@ export class ProductService {
                 method: 'DELETE'
             }
             res = await fetch(url + '/' + id, opt);
+            console.log("RES IN DEL: ", res);
         } catch(error) {
-            console.log('Cannnot delete payment, error: ' + error);
+            console.log('Cannnot delete product, error: ' + error);
         }
         return JSON.parse(await res.text());
     }

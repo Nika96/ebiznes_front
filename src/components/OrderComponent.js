@@ -22,7 +22,7 @@ export class OrderComponent extends Component {
     }
 
     async componentDidMount() {
-        let res = await this.orderService.getOrderByID(1)
+        let res = await this.orderService.getAllOrders()
         this.setState({order: res});
     }
 

@@ -1,26 +1,39 @@
 import React, { Component } from "react";
-import { OrderedProductsService } from "../services/OrderedProductsService";
 import Table from "react-bootstrap/Table";
+import { OrderedProductsService } from "../services/OrderedProductsService";
+import { CategoryComponent } from "./CategoryComponent";
 
 
 export class OrderedProductsComponent extends Component {
 
-    orderService: OrderedProductsService;
+    orderedProductsService: OrderedProductsService;
 
     constructor() {
         super();
-        this.orderService = new OrderedProductsService();
-        this.state = {order: []};
+        this.orderedProductsService = new OrderedProductsService();
+        this.state = {orderedProducts: []};
     }
 
     async componentDidMount() {
-        let res = await this.orderService.getOrderedProductsByID(1);
-        this.setState({order: res});
+        let res = await this.orderedProductsService.getAllOrderedProducts();
+        this.setState({orderedProducts: res});
+        console.log('ORDERED: ', this.state.orderedProducts);
     }
 
     render() {
+        let orderedProductsRows = this.state.orderedProducts.map( op => (
+            <tr>
+                <td>{ op.id }</td>
+                <td>{ op.productID }</td>
+                <td>{ op.productName }</td>
+                <td>{ op.quantity }</td>
+            </tr>
+        ));
+
         return (
             <div>
+                <CategoryComponent/>
+                <div>
                 <h5>Ordered Products</h5>
                 <Table striped bordered hover>
                     <thead>
@@ -32,14 +45,10 @@ export class OrderedProductsComponent extends Component {
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <td>{ this.state.order.id }</td>
-                        <td>{ this.state.order.productID }</td>
-                        <td>{ this.state.order.productName }</td>
-                        <td>{ this.state.order.quantity }</td>
-                    </tr>
+                    { orderedProductsRows }
                     </tbody>
                 </Table>
+                </div>
             </div>
         );
     }
