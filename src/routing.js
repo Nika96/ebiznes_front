@@ -23,6 +23,8 @@ const routing = (
         <Route exact path="/payment" component={PaymentComponent}/>
         <Route exact path="/review" component={ReviewComponent}/>
         <Route exact path="/status" component={StatusComponent}/>
+        {/*<Route exact path="/logIn" component={SignInComponent}/>*/}
+
     </BrowserRouter>
 );
 

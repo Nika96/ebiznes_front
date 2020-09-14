@@ -15,7 +15,7 @@ import {OrderedProductsComponent} from "./components/OrderedProductsComponent";
 import {PaymentComponent} from "./components/PaymentComponent";
 import {ReviewComponent} from "./components/ReviewComponent";
 import {StatusComponent} from "./components/StatusComponent";
-import {LogInComponent} from "./components/LogInComponent";
+// import {LogInComponent} from "./components/LogInComponent";
 
 ReactDOM.render(
     <BrowserRouter>
@@ -29,7 +29,7 @@ ReactDOM.render(
         <Route exact path="/payment" component={PaymentComponent}/>
         <Route exact path="/review" component={ReviewComponent}/>
         <Route exact path="/status" component={StatusComponent}/>
-        <Route exact path="/logIn"  component={LogInComponent}/>
+        {/*<Route exact path="/logIn"  component={LogInComponent}/>*/}
     </BrowserRouter>,
   document.getElementById('root')
 );

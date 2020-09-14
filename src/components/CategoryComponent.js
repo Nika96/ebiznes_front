@@ -40,7 +40,7 @@ export class CategoryComponent extends Component {
                     <Nav.Link href="/ordered-products">My basket</Nav.Link>
                 </Nav.Item>
                 <Nav.Item as="li">
-                    <Nav.Link href="/logIn">Log Out</Nav.Link>
+                    <Nav.Link href="http://localhost:9000/signIn">Log Out</Nav.Link>
                 </Nav.Item>
             </Nav>
         );
